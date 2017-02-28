@@ -1,0 +1,152 @@
+    
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+      <li role="presentation" class=""><a href="#classes" data-toggle="tab">Assignments</a></li>
+      <li role="presentation"><a href="#reviews" data-toggle="tab">Evaluation Feedback</a></li>
+      <li role="presentation"><a href="#presentations" data-toggle="tab">Participation</a></li>
+      <li role="presentation"><a href="#eval" data-toggle="tab">Final Evaluation</a></li>
+    </ul>
+    
+    <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="profile">
+          <div class="container">
+            <h3><img src="http://placehold.it/128x128" class="img-circle"> {{ request.user}}, human</h3>
+            <hr>
+            <p><label>Website</label> someurl</p>
+            <p><label>Final Project</label> someurl | sameurl | sameurl </p>
+            <p><label>Repo size</label> 323Mb</p>
+            <p><label class="label label-danger">continuing</label>
+            <label class="label label-success">graduated</label>
+            <label class="label label-info">scholarship</label></p>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane " id="classes">
+          <table class="table table-striped" border="0" cellspacing="5" cellpadding="5">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Module</th>
+              <th></th>
+              <th>Progress</th>
+              <th>Complete</th>            
+            </tr>
+            </thead>
+            <tbody>
+              {% for mod in modules %}
+              <tr>
+                <td>{{mod.date}}</td>
+                <td><a href="#">{{mod.name}}</a></td>
+                <td> <div><a href="#" class="btn btn-sm btn-default">Show assignment</a></div></td>
+                {% for p in progress %}
+                {% if p.module == mod %}
+                <td> {{p.progress}}%</td>
+                <td><input type="checkbox" readonly value="{% if p.completed %}checked{% endif %}"></td>
+                {% endif %}
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="reviews">
+          <br/>
+          {% for session in sessions %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              {{session.title}}
+            </div>
+            <div class"panel-body">
+              <div class="container-fluid">
+                <br>
+              <p><label>Module:</label> {{session.module}} </p>
+            {% for review in reviews %}
+            {% if review.session == session %}
+              <p> <label>Date:</label> {{review.date}} <label>Evaluator:</label> {{review.evaluator}}
+             </p>
+              <p>{{review.notes}}</p>
+              
+            {% endif %}
+            {% endfor %}
+              
+              
+            <p>
+              <a href="#comment-form" class="btn btn-default" data-toggle="collapse">add comment...</a>
+            <a href="#comment-list" class="btn btn-default"  data-toggle="collapse">show comments</a></p>
+
+            <div id="comment-list"  class="collapse">
+            <div class="comment">
+              <strong>Date 324134</strong><br/>
+            <blockquote>
+              Comment in several lines
+            </blockquote>
+            </div>
+          </div>
+
+            <div id="comment-form"  class="collapse">
+            <form>
+              <label>Add comment</label>
+              <div class="form-group">
+                <textarea name="comment" class="form-control" rows="8" cols="40"></textarea>
+              </div>
+              <div class="form-group">
+              <button class="btn btn-success">Send</button>
+              </div>
+            </form>
+            </div>
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}          
+         
+        </div>
+        <div role="tabpanel" class="tab-pane" id="eval">
+            <table class="table table-striped" border="0" cellspacing="5" cellpadding="5">
+              <thead>
+              <tr>
+                <th>Date</th>
+                <th>Module</th>
+                <th>Certificate</th>     
+                <th>Notes</th>
+                <th></th>           
+              </tr>
+              </thead>
+              <tbody>
+                 
+              </tbody>
+            </table>
+          
+          
+        </div>
+        <div role="tabpanel" class="tab-pane" id="presentations">
+            <table class="table table-striped" border="0" cellspacing="5" cellpadding="5">
+              <thead>
+              <tr>
+                <th>Session</th>
+                <th>Booked</th>
+                <th>Presented</th>
+              </tr>
+              </thead>
+              <tbody>
+                {% for book in bookings %}
+                <tr>
+                  <td>{{ book.session }}</td>
+                  <td>Data</td>
+                  <td><input type="checkbox" readonly value="{% if book.attended %}checked{%endif%}"></td>
+                  <td><input type="checkbox" readonly value="{% if book.confirmed %}checked{%endif%}"></td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td colspan="4">No session booked</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            
+            <div class="pull-right">
+              <button class="btn btn-default">Book session</button>
+            </div>
+        </div>
+      </div>
+    

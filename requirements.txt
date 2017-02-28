@@ -1,0 +1,7 @@
+Django
+psycopg2
+django-markdown-app
+django-grappelli
+django-tabbed-admin
+django-countries-plus
+django-apptemplates

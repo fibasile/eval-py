@@ -1,0 +1,16 @@
+    <nav class="navbar navbar-default"> 
+      <div class="container-fluid"> 
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand"> Academany Dashboard</a> 
+        </div> 
+        <div class="collapse navbar-collapse"> 
+          {% if user.is_authenticated %}
+          
+          <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{ request.user.username }}</a>
+        <a class="btn btn-sm btn-default" href="/logout">Logout</a>
+        
+        
+        {% endif %}
+        </p> </div>
+      </div> 
+    </nav>

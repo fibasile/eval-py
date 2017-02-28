@@ -1,0 +1,36 @@
+{% extends "dashboard/index.html" %} 
+{% block content %}
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Programs</h4>
+  </div>
+<div class="panel-body">
+
+<div class="table-responsive mailbox-messages">
+                    <table class="table table-hover table-striped">
+                      <tbody>
+                        {% for p in programs %}
+                        <tr>
+                          <td class="mailbox-star"><h4>{{ p.program }}</h4>
+                          <label class="label label-default">{{ p.role }}</label> 
+                          <div class="pull-right">
+                          <a class="btn btn-default" href="/dashboard/programs/{{p.program.code}}">Details</a>
+                          </div>
+                        </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                          <td>You are not registered in any program currently</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    </div>
+</div>
+</div>
+
+
+
+{% endblock %}

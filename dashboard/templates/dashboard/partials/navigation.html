@@ -1,0 +1,8 @@
+        <ul class="nav nav-pills nav-stacked">
+          <li {% if request.path == '/dashboard/' %} class="active" {% endif %}><a href="/dashboard/">Dashboard</a></li>
+          <li {% if request.path == '/dashboard/profile' %} class="active" {% endif %}><a href="/dashboard/profile">Profile</a></li>
+          <li {% if request.path == '/dashboard/inbox' %} class="active" {% endif %}><a href="/dashboard/inbox">Inbox</a></li>
+          <li {% if request.path == '/dashboard/account' %} class="active" {% endif %}><a href="/dashboard/account">Account</a></li>
+          <li{% if request.path == '/dashboard/programs' %} class="active" {% endif %}><a href="/dashboard/programs">Programs</a></li>
+          <li{% if request.path == '/dashboard/programs/fabacademy2017' %} class="active" {% endif %}><a href="/dashboard/programs/fabacademy2017">Fab Academy 2017</a></li>  
+        </ul>

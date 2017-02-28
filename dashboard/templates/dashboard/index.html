@@ -1,0 +1,64 @@
+{% extends "dashboard/base.html" %} 
+
+  {% block content_menu %}
+
+     {% include "dashboard/partials/navigation.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+<h3><img src="http://placehold.it/128x128" class="img-circle"> Welcome, human</h3>
+
+<hr>
+
+<div class="row">
+
+  <div class="col-md-6">    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Up next
+      </div>
+      <div class="panel-body">
+        This week module / assignment
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Latest news
+      </div>
+      <div class="panel-body">
+    This week module / assignment
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Your progress
+      </div>
+      <div class="panel-body">
+    Progress stats
+      </div>
+    </div>
+    
+    
+  </div>
+  
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Gitlab 
+      </div>
+      <div class="panel-body">
+          Activity stats
+          Repo size
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

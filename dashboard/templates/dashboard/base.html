@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ title }}</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{% static "dashboard/css/bootstrap.min.css" %}" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="{% static "dashboard/css/bootstrap-theme.min.css" %}" crossorigin="anonymous">
+
+</head>
+<body>
+  {% block container %}
+  <div class="container-fluid">
+    
+    {% block content_title %}
+
+    {% include "dashboard/partials/navbar.html" %}
+    
+    {% endblock %}
+    
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+    {% block centered_box %}
+    {% endblock %}
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2 leftcol">
+        {% block content_menu %}
+
+        {% endblock %}
+      </div>
+      <div class="col-md-10">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+   </div>
+   {% endblock %}
+<script  src="{% static "dashboard/js/jquery-3.1.1.min.js" %}" type="text/javascript"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="{% static "dashboard/js/bootstrap.min.js" %}" crossorigin="anonymous"></script>
+</body>
+</html>

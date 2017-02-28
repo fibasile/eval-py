@@ -1,0 +1,41 @@
+{% extends "dashboard/index.html" %} 
+{% block content %}
+
+{% if is_student %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4> {{program.title}} - Student page</h4>
+  </div>
+  
+  <div class="panel-body">
+    {% include "dashboard/partials/program_student.html" %}
+  </div>
+  
+</div>
+
+{% elif is_instructor %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Fab Academy 2017 - Instructor page</h4>
+  </div>
+  
+  <div class="panel-body">
+    {% include "dashboard/partials/program_instructor.html" %}
+  </div>
+  
+</div>
+
+{% elif is_global_eval %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Fab Academy 2017 - Global eval page</h4>
+  </div>
+  
+  <div class="panel-body">
+    {% include "dashboard/partials/program_globaleval.html" %}
+  </div>
+  
+</div>
+{% endif %}
+
+{% endblock %}
